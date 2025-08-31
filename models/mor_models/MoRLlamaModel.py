@@ -1,7 +1,7 @@
 import torch
-from typing import Optional, Tuple, Union, Unpack
+from typing import Optional, Tuple, Union, Unpack, List, Dict, Any
 from torch import nn
-from transformers.cache_utils import Cache, DynamicCache, List, Dict, Any
+from transformers.cache_utils import Cache, DynamicCache
 from transformers.modeling_flash_attention_utils import FlashAttentionKwargs
 from models.mor_models.MoROutputWithPast import MoRBaseModelOutputWithPast
 from transformers.utils import logging
