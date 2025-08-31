@@ -5,7 +5,7 @@ from transformers.cache_utils import Cache, DynamicCache
 from transformers.modeling_flash_attention_utils import FlashAttentionKwargs
 from models.mor_models.MoROutputWithPast import MoRBaseModelOutputWithPast
 from transformers.utils import logging
-from models.llama_models import LlamaModel
+from models.llama_models.LlamaModel import LlamaModel
 from models.mor_models.utils import logger
 from transformers.utils.doc import (
     add_code_sample_docstrings,
