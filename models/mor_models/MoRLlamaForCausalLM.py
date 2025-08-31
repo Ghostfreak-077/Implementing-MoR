@@ -4,7 +4,6 @@ import torch.nn as nn
 from models.mor_models.MoRLlamaModel import MoRLlamaModel
 from typing import Optional, Tuple, Union, List
 from transformers.cache_utils import Cache
-from models.mor_models.MoRLlamaForCausalLM import MoRCausalLMOutputWithPast
 from models.mor_models.MoRDecoderLayers import MoRLlamaDecoderLayer
 from models.mor_models.MoROutputWithPast import MoRCausalLMOutputWithPast
 from transformers.models.llama.modeling_llama import LlamaForCausalLM
