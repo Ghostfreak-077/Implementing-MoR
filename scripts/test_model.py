@@ -17,6 +17,8 @@ config = AutoConfig.from_pretrained(
     map_location=cfg.device
 )
 
+print("Model configuration loaded.")
+
 def load_tokenizer_from_config(cfg: None):
     tokenizer = AutoTokenizer.from_pretrained("HuggingFaceTB/SmolLM-135M")
     if tokenizer.pad_token is None:
@@ -28,10 +30,16 @@ def load_tokenizer_from_config(cfg: None):
     return tokenizer
 
 model = MoRLlamaForCausalLM(config=config).to(cfg.device)
+print("Model loaded.")
+
 tokenizer = load_tokenizer_from_config(cfg=None)
+
+print("Tokenizer loaded.")
 
 input_text = "Hello, this is a test for the MoR model."
 inputs = tokenizer(input_text, return_tensors="pt")
+
+print("Input tokenized.")
 
 print(f"Input text: '{input_text}'")
 print(f"Input tensor shape: {inputs['input_ids'].shape}")
