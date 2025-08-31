@@ -262,8 +262,6 @@ class MoRLlamaModel(LlamaModel):
     Args:
         config: LlamaConfig
     """
-    def __init__(self, config):
-        super().__init__(config)
 
     @add_start_docstrings_to_model_forward(LLAMA_INPUTS_DOCSTRING)
     def forward(
