@@ -6,11 +6,13 @@ from typing import Optional, Tuple, Union, Unpack, Callable
 from transformers.modeling_flash_attention_utils import FlashAttentionKwargs
 from transformers.cache_utils import Cache
 from transformers.modeling_utils import ALL_ATTENTION_FUNCTIONS, PreTrainedModel
-from models.mor_models.MoROutputWithPast import MoRLayerOutputWithPast
-from utils import get_torch_dtype, repeat_kv
+# from models.mor_models.MoROutputWithPast import MoRLayerOutputWithPast
+from models.mor_models.utils import get_torch_dtype, repeat_kv
 from transformers.models.llama.modeling_llama import apply_rotary_pos_emb, eager_attention_forward
 from transformers.models.llama.modeling_llama import LlamaAttention
-from utils import logger
+from models.mor_models.utils import logger
+from transformers.utils import ModelOutput
+from dataclasses import dataclass
 
 class LinearRouter(nn.Module):
     def __init__(self, config, out_dim=1):
@@ -21,6 +23,21 @@ class LinearRouter(nn.Module):
         
     def forward(self, x):
         return self.router(x)
+    
+@dataclass
+class MoRLayerOutputWithPast(ModelOutput):
+
+    hidden_state: Optional[torch.FloatTensor] = None
+    attention_weights: Optional[torch.FloatTensor] = None
+    selected_tokens: Optional[torch.FloatTensor] = None
+    sampling_loss: Optional[torch.FloatTensor] = None
+    sampling_acc: Optional[torch.FloatTensor] = None
+    sampling_topk_acc: Optional[torch.FloatTensor] = None
+    uniformity: Optional[torch.FloatTensor] = None
+    dead_token_seq: Optional[torch.FloatTensor] = None
+    balancing_loss: Optional[torch.FloatTensor] = None
+    balancing_ratio: Optional[torch.FloatTensor] = None
+    router_z_loss: Optional[torch.FloatTensor] = None
 
 class MoRLlamaAttention(LlamaAttention):
     """Multi-headed attention from 'Attention Is All You Need' paper"""
