@@ -6,7 +6,7 @@ from typing import Optional, Tuple, Union, Unpack, Callable
 from transformers.modeling_flash_attention_utils import FlashAttentionKwargs
 from transformers.cache_utils import Cache
 from transformers.modeling_utils import ALL_ATTENTION_FUNCTIONS, PreTrainedModel
-from MoROutputWithPast import MoRLayerOutputWithPast
+from models.mor_models.MoROutputWithPast import MoRLayerOutputWithPast
 from utils import get_torch_dtype, repeat_kv
 from transformers.models.llama.modeling_llama import apply_rotary_pos_emb, eager_attention_forward
 from transformers.models.llama.modeling_llama import LlamaAttention
