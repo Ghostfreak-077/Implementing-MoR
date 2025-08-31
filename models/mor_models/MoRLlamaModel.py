@@ -3,10 +3,10 @@ from typing import Optional, Tuple, Union, Unpack
 from torch import nn
 from transformers.cache_utils import Cache, DynamicCache, RecursiveDynamicCache
 from transformers.modeling_flash_attention_utils import FlashAttentionKwargs
-from MoROutputWithPast import MoRBaseModelOutputWithPast
+from models.mor_models.MoROutputWithPast import MoRBaseModelOutputWithPast
 from transformers.utils import logging
-from llama_models import LlamaModel
-from mor_models.utils import logger
+from models.llama_models import LlamaModel
+from models.mor_models.utils import logger
 from transformers.utils.doc import (
     add_code_sample_docstrings,
     add_start_docstrings,
