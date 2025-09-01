@@ -45,9 +45,12 @@ print(f"Input text: '{input_text}'")
 print(f"Input tensor shape: {inputs['input_ids'].shape}")
 
 
-inputs = {k: v.to("cuda") for k, v in inputs.items()}
+inputs = {k: v.to(cfg.device) for k, v in inputs.items()}
 
-# model.transform_layer_to_mor_expert(config)
+config_path = "conf/250720_pretrain_smollm-360m_rec4_middle_cycle_random_lr3e-3_mor_expert_linear_alpha_0.1_sigmoid_aux_loss_0.001.yaml"
+omegaConfig = OmegaConf.load(config_path)
+
+model.transform_layer_to_mor_expert(omegaConfig)
 
 with torch.no_grad():
     outputs = model(**inputs)
