@@ -4,6 +4,9 @@ from transformers import AutoConfig
 from utils.config import Config
 from models.mor_models.MoRLlamaForCausalLM import MoRLlamaForCausalLM
 from transformers import AutoTokenizer
+import warnings
+
+warnings.filterwarnings("ignore")
 
 cfg = Config()
 attn_implementation = "flash_attention_2"
